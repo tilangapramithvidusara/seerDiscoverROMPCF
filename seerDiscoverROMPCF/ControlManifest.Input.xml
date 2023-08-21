@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="seerDiscoverROM" constructor="seerDiscoverROMPCF" version="1.0.23" display-name-key="seerDiscoverROMPCF" description-key="seerDiscoverROMPCF description" control-type="virtual" >
+  <!-- control-type="standard" -->
+    <external-service-usage enabled="false">
+    </external-service-usage>
+    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+    <!-- <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" /> -->
+    <property name="fetchXml" display-name-key="FetchXml" description-key="FetchXml to execute" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="entityName" display-name-key="Entity Name" description-key="Entity Name" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="output" display-name-key="Output" description-key="Output" of-type="SingleLine.Text" usage="output" required="false" />
+    <property name="accountId" display-name-key="Account Id" description-key="Account Id" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="reportId" display-name-key="Report Id" description-key="Report Id" of-type="SingleLine.Text" usage="bound" required="true" />
+    <!-- <property name="outputSchema" display-name-key="OutputSchema" description-key="OutputSchema" of-type="SingleLine.Text" usage="bound" />
+    <property-dependencies>      
+      <property-dependency input="outputSchema" output="output" required-for="schema" />
+    </property-dependencies> -->
+
+    <resources>
+      <code path="index.ts" order="1"/>
+      <!-- <platform-library name="React" version="18.2.0" /> -->
+      <!-- <platform-library name="Fluent" version="8.29.0" /> -->
+
+    </resources>
+    <feature-usage>      
+      <uses-feature name="WebAPI" required="true" />
+      <uses-feature name="Utility" required="true" />
+    </feature-usage>
+
+  </control>
+</manifest>
