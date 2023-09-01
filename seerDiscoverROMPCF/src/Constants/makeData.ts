@@ -8,10 +8,6 @@ export type Person = {
 };
 
 export const columnDetails = [
-  // {
-  //   header: 'Code',
-  //   accessorKey: 'titleCode',
-  // },
   {
     header: 'Category',
     accessorKey: 'nameCategory',
