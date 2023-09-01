@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="seerDiscoverROM" constructor="seerDiscoverROMPCF" version="1.0.23" display-name-key="seerDiscoverROMPCF" description-key="seerDiscoverROMPCF description" control-type="virtual" >
+  <control namespace="seerDiscoverROM" constructor="seerDiscoverROMPCF" version="1.0.23" display-name-key="seerDiscoverROMPCF" description-key="seerDiscoverROMPCF description" control-type="standard" > 
+  <!-- control-type="virtual" -->
   <!-- control-type="standard" -->
     <external-service-usage enabled="false">
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-    <!-- <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" /> -->
+    <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="fetchXml" display-name-key="FetchXml" description-key="FetchXml to execute" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="entityName" display-name-key="Entity Name" description-key="Entity Name" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="output" display-name-key="Output" description-key="Output" of-type="SingleLine.Text" usage="output" required="false" />
@@ -18,6 +19,7 @@
 
     <resources>
       <code path="index.ts" order="1"/>
+      <css path="css/styles.css" order="1" />
       <!-- <platform-library name="React" version="18.2.0" /> -->
       <!-- <platform-library name="Fluent" version="8.29.0" /> -->
 

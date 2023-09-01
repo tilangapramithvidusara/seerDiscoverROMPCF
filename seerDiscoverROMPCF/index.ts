@@ -3,6 +3,10 @@ import {IInputs, IOutputs} from "./generated/ManifestTypes";
 import * as React from "react";
 // import { Xrm } from "./global";
 // import { fetchRecords } from "./requests";
+
+import * as ReactDOM from "react-dom";
+import App from "./src/App";
+
 import toJsonSchema = require("to-json-schema");
 
 // declare global {
@@ -18,6 +22,7 @@ export class seerDiscoverROMPCF implements ComponentFramework.StandardControl<II
     private fetchXml: any;
     private entityName: any;
     private outputSchema ?: toJsonSchema.JSONSchema3or4;
+    private container: HTMLDivElement;
     constructor()
     {
 
@@ -33,7 +38,8 @@ export class seerDiscoverROMPCF implements ComponentFramework.StandardControl<II
      */
     public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
     {
-        this.notifyOutputChanged = notifyOutputChanged;
+        // this.notifyOutputChanged = notifyOutputChanged;
+        this.container = container;
     }
 
 
@@ -41,17 +47,22 @@ export class seerDiscoverROMPCF implements ComponentFramework.StandardControl<II
      * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
      * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
      */
-    public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement
-    {
+    public updateView(context: ComponentFramework.Context<IInputs>): void
+    {   
+        // : React.ReactElement
         console.log('entity name : ', context?.parameters?.entityName?.raw)
         console.log('account id : ', context?.parameters?.accountId?.raw)
         console.log('report id : ', context?.parameters?.reportId.raw)
 
         // this.jsonLoader();
-        const reportId = context?.parameters?.reportId?.raw;
-        const accountId = context?.parameters?.accountId?.raw;
-        this.dataLoad(reportId, accountId, context)
-        return React.createElement(React.Fragment);
+        // const reportId = context?.parameters?.reportId?.raw;
+        // const accountId = context?.parameters?.accountId?.raw;
+        // this.dataLoad(reportId, accountId, context)
+        // return React.createElement(React.Fragment);
+        console.log("MMM");
+        
+        ReactDOM.render(React.createElement(App, { tableContent: [] }), this.container);
+        console.log("MMM2");
     }
 
     async dataLoad(reportId: any, accountId: any, context: ComponentFramework.Context<IInputs>) {
@@ -156,9 +167,9 @@ export class seerDiscoverROMPCF implements ComponentFramework.StandardControl<II
      * It is called by the framework prior to a control receiving new data.
      * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as “bound” or “output”
      */
-    public getOutputs(): IOutputs {
-        return { output: this.response };
-    }
+    // public getOutputs(): IOutputs {
+    //     return { output: this.response };
+    // }
     // public getOutputs(): IOutputs
     // {
     //     return { 
@@ -167,16 +178,13 @@ export class seerDiscoverROMPCF implements ComponentFramework.StandardControl<II
     //      };
     // }
 
+    // 33333333####### CORRECT ONE
     // public async getOutputSchema(context: ComponentFramework.Context<IInputs>): Promise<any> {
     //     return Promise.resolve({
     //         output: this.outputSchema
     //     });
     // }
 
-    /**
-     * Called when the control is to be removed from the DOM tree. Controls should use this call for cleanup.
-     * i.e. cancelling any pending remote calls, removing listeners, etc.
-     */
     public destroy(): void
     {
         // Add code to cleanup control if necessary

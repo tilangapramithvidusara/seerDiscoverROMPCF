@@ -1,5 +1,6 @@
 import { SearchOutlined } from '@ant-design/icons';
-import React, { useRef, useState } from 'react';
+import * as React from "react";
+import { useRef, useState } from 'react';
 import Highlighter from 'react-highlight-words';
 import type { InputRef } from 'antd';
 import { Button, Input, Space, Table } from 'antd';
