@@ -25,9 +25,9 @@ th {
 }
 
 /* Data row styles */
-tr:nth-child(even) {
+/* tr:nth-child(even) {
   background-color: #f2f2f2;
-}
+} */
 
 /* Pagination styles */
 .pagination {
